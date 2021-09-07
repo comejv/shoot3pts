@@ -3,21 +3,21 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+# Paramètres
 V0 = float(
     input("Quelle est la vitesse initiale de lancer en mètres par seconde ?"))
-g = 9.8  # Accélération gravitationelle en m.s-2
 T = float(input("Quelle est la hauteur à laquelle le ballon est lancé ?"))
-H_panier = 3.05 - T  # Hauteur panier relativement au départ du ballon
-r = 0.24  # Diamètre ballon
 
+r = 0.24  # Diamètre ballon
+g = 9.8  # Accélération gravitationelle en m.s-2
 pos_planche = 6.75
 D_panier = 0.45
 support_panier = 0.15
-# pos_panier1 = [pos_planche-support_panier-D_panier,H_panier]
-# pos_panier2 = [pos_planche-support_panier,H_panier]
 
 x_panier = [6.15, 6.6]
-y_panier = [3.05,3.05]
+h_panier = 3.05 - T  # Hauteur panier relativement au départ du ballon
+y_panier = [h_panier, h_panier]
+
 
 def ACosTan(A):
 
@@ -46,12 +46,10 @@ Acos, Atan = ACosTan(float(input("Quel est l'angle de lancer en degrés ?")))
 
 centre_inertie = position(g, V0, Acos, Atan)
 
-# Problème : il faut ajouter le rayon perpendiculèrement au centre d'inertie
-haut_ballon = position(g, V0, Acos, Atan) + (r/2)
-
-plt.plot(x, centre_inertie, x, haut_ballon)
-plt.scatter(x_panier, y_panier, shape='x') # Erreur ici pour afficher des points
-plt.ylim(0,5)
-plt.xlim(0,10)
+# plt.plot(x, centre_inertie, 'r:')
+plt.plot(x, centre_inertie, color='red', linewidth=4, linestyle=':')
+plt.plot(x_panier, y_panier, marker="x", color="blue", linestyle=":")
+plt.ylim(0, 5)
+plt.xlim(0, 10)
 
 plt.show()
