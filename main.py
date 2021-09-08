@@ -1,13 +1,15 @@
 # Author : Côme VINCENT
 # Copyrights 2021
 # Python 3.6
+
 # ? Le but est de trouver les vecteurs V et A pour que le ballon lancé rentre dans le panier sans toucher l'arceau
+
+# -> Trouver un moyen de modéliser volume ballon. Peut-être juste au moment de passer l'arceau ?
+
 import matplotlib.pyplot as plt
 import numpy as np
 
 # Fonctions
-
-
 def ACosTan(A):
 
     # Conversion de langle en radians car numpy est en radians
