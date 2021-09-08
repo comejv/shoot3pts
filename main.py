@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Fonctions
+
+
 def ACosTan(A):
 
     # Conversion de langle en radians car numpy est en radians
@@ -63,7 +65,9 @@ x2 = np.linspace(0, temp_x[len(y2)], len(y2))
 
 # Affichage courbes
 plt.plot(x, y, color='red', linewidth=4, linestyle=':')
-plt.plot(x2, y2, color='blue', linewidth=1, linestyle='-')
+
+# -> plt.plot(x2, y2, color='blue', linewidth=1, linestyle='-')
+
 plt.plot(x_arceau, y_arceau, marker="x", color="blue", linestyle=":")
 plt.ylim(0, 5)
 plt.xlim(0, 10)
