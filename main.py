@@ -7,9 +7,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+# -> A faire : test si ballon rentre dans panier
+
 # ! FONCTIONS
-
-
 def ACosTan(A):
 
     # Conversion de langle en radians car numpy est en radians
@@ -50,11 +50,11 @@ def touche_arceau():  # Test si distance (centre ballon - arceau) > rayon ballon
 
 # def touche_sol(): # * Pas très utile
 #     return (-2*Atan)/(-9.8*(8**-2)*(Acos**-2))
+
 # Paramètres
 V0 = float(
     input("Quelle est la vitesse initiale de lancer en mètres par seconde ?"))
-# T = float(input("Quelle est la hauteur à laquelle le ballon est lancé ?"))
-T = 1.85
+T = float(input("Quelle est la hauteur à laquelle le ballon est lancé ?"))
 A = float(input("Quel est l'angle de lancer en degrés ?"))
 Acos, Atan = ACosTan(A)
 
