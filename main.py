@@ -53,17 +53,9 @@ y = [item for item in y if item >= 0]
 # Création array à la bonne taille p/r à y
 x = np.linspace(0, temp_x[len(y)], len(y))
 
-# ! L'équation ne marche, pas, elle retourne les mêmes valeurs que y
-# Bas ballon
-y2 = position(g, V0, Acos, Atan)
-# Enlever les valeurs négatives
-y2 = [item for item in y if item >= 0]
-# Création array à la bonne taille p/r à y
-x2 = np.linspace(0, temp_x[len(y2)], len(y2))
 
 # Affichage courbes
 plt.plot(x, y, color='red', linewidth=4, linestyle=':')
-plt.plot(x2, y2, color='blue', linewidth=1, linestyle='-')
 plt.plot(x_arceau, y_arceau, marker="x", color="blue", linestyle=":")
 plt.ylim(0, 5)
 plt.xlim(0, 10)
