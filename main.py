@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Fonctions
+
+
 def ACosTan(A):
 
     # Conversion de langle en radians car numpy est en radians
