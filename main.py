@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Fonctions
+
+
 def ACosTan(A):
 
     # Conversion de langle en radians car numpy est en radians
@@ -30,14 +32,19 @@ def position(acceleration_gravitationelle, vitesse_initiale, cosinus_angle, tang
     return hauteur
 
 
+def touche_sol():
+    return (-2*Atan)/(-9.8*(8**-2)*(Acos**-2))
+
+
 # Paramètres
 V0 = float(
     input("Quelle est la vitesse initiale de lancer en mètres par seconde ?"))
 T = float(input("Quelle est la hauteur à laquelle le ballon est lancé ?"))
-Acos, Atan = ACosTan(float(input("Quel est l'angle de lancer en degrés ?")))
+A = float(input("Quel est l'angle de lancer en degrés ?"))
+Acos, Atan = ACosTan(A)
 
 # Constantes
-r = 0.24  # Diamètre ballon
+r_ballon = 0.24  # Diamètre ballon
 pos_planche = 6.75  # Distance origine repère - fond terrain
 D_panier = 0.45  # Diamètre du panier
 x_arceau = [6.15, 6.6]
@@ -55,9 +62,14 @@ x = np.linspace(0, temp_x[len(y)], len(y))
 
 
 # Affichage courbes
-plt.plot(x, y, color='red', linewidth=4, linestyle=':')
-plt.plot(x_arceau, y_arceau, marker="x", color="blue", linestyle=":")
-plt.ylim(0, 5)
+plt.plot(x, y, color='red', linewidth=4,
+         linestyle=':', label='Trajectoire du ballon')
+plt.plot(x_arceau, y_arceau, marker="x", color="blue",
+         linestyle=":", label='Limites du panier')
+plt.ylim(0, 4)
 plt.xlim(0, 10)
+
+# Affichage infos graph
+plt.legend()
 
 plt.show()
