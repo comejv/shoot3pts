@@ -7,9 +7,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-# -> A faire : test si ballon rentre dans panier
 
 # ! FONCTIONS
+
 def ACosTan(A):
 
     # Conversion de langle en radians car numpy est en radians
@@ -31,35 +31,26 @@ def position(acceleration_gravitationelle, vitesse_initiale, cosinus_angle, tang
     return hauteur
 
 
-def touche_arceau():  # Test si distance (centre ballon - arceau) > rayon ballon
-    for i in range(len(x)):
+# Test si distance (centre ballon - arceau) > rayon ballon et si ballon rentre
+def test_touche(abscisse, ordonee):
+    for i in range(len(abscisse)):
+        distance_ballon_arceau0 = np.sqrt(
+            (abscisse[i]-x_arceau[0])**2 + (ordonee[i]-y_arceau[0])**2)
         distance_ballon_arceau1 = np.sqrt(
-            ((x[i]-x_arceau[0])**2)+((y[i]-y_arceau[0])**2))
-        distance_ballon_arceau2 = np.sqrt(
-            ((x[i]-x_arceau[1])**2)+((y[i]-y_arceau[1])**2))
-        if distance_ballon_arceau1 < r_ballon:
-            touche = True
-            break
-        elif distance_ballon_arceau2 < r_ballon:
-            touche = True
-            break
-        else:
-            touche = False
-    return touche
+            (abscisse[i]-x_arceau[1])**2 + (ordonee[i]-y_arceau[0])**2)
+        if distance_ballon_arceau0 <= r_ballon or distance_ballon_arceau1 <= r_ballon:
+            return True
 
-
-# def touche_sol(): # * Pas très utile
-#     return (-2*Atan)/(-9.8*(8**-2)*(Acos**-2))
 
 # Paramètres
+T = float(input("Quelle est la hauteur à laquelle le ballon est lancé ?"))
 V0 = float(
     input("Quelle est la vitesse initiale de lancer en mètres par seconde ?"))
-T = float(input("Quelle est la hauteur à laquelle le ballon est lancé ?"))
 A = float(input("Quel est l'angle de lancer en degrés ?"))
 Acos, Atan = ACosTan(A)
 
 # Constantes
-r_ballon = 0.24  # Diamètre ballon
+r_ballon = 0.12  # Diamètre ballon
 pos_planche = 6.75  # Distance origine repère - fond terrain
 D_panier = 0.45  # Diamètre du panier
 x_arceau = [6.15, 6.6]
@@ -70,15 +61,14 @@ g = 9.8  # Accélération gravitationelle en m.s-2
 # ! MAIN
 
 # Centre inertie ballon
-temp_x = np.linspace(0, 10, 60)
+temp_x = np.linspace(0, 10, 100)
 y = position(g, V0, Acos, Atan)
 # Enlever les valeurs négatives
 y = [item for item in y if item >= 0]
 # Création array à la bonne taille p/r à y
 x = np.linspace(0, temp_x[len(y)], len(y))
 
-# Test si touche le sol et affichage
-if touche_arceau() == True:
+if test_touche(x, y):
     resultat = "Le ballon touche l'arceau"
 else:
     resultat = "Le ballon ne touche pas l'arceau"
