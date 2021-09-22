@@ -7,7 +7,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-
+rieoyg
 # ! FONCTIONS
 
 def ACosTan(A):
