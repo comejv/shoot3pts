@@ -7,7 +7,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-rieoyg
+
 # ! FONCTIONS
 
 def ACosTan(A):
@@ -33,7 +33,7 @@ def position(acceleration_gravitationelle, vitesse_initiale, cosinus_angle, tang
 
 # Test si distance (centre ballon - arceau) > rayon ballon et si ballon rentre
 def test_touche(abscisse, ordonee):
-    for i in enumerate(abscisse):
+    for i in range(len(abscisse)):
         distance_ballon_arceau0 = np.sqrt(
             (abscisse[i]-x_arceau[0])**2 + (ordonee[i]-y_arceau[0])**2)
         distance_ballon_arceau1 = np.sqrt(
